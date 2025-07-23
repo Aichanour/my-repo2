@@ -1,0 +1,332 @@
+---
+title: "Untitled1"
+author: "BALDE"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+dataUnido <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1uLaXke-KPN28-ESPPoihk8TiXVWp5xuNGHW7w7yqLCc/edit?usp=sharing")
+```
+
+```{r}
+library(gsheet)
+library(dplyr)
+library(tidyr)
+library(readr)
+```
+
+```{r}
+library(dplyr)
+dataUnido %>%
+  glimpse()
+```
+```{r}
+# Loading the gsheet package
+library(gsheet)
+# Read data from the URL
+dataUnido <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1uLaXke-KPN28-ESPPoihk8TiXVWp5xuNGHW7w7yqLCc/edit#gid=416085055")
+head(dataUnido)
+```
+
+
+```{r}
+# Loading the gsheet package
+library(gsheet)
+# Read data from the URL
+variablesUnido <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1JYiydgI9QEOKAStmtmrBTmGuGQ0bx1gnnarO4Db0MD8/edit#gid=919352283")
+head(variablesUnido)
+```
+
+
+```{r}
+library(readr)
+gdp <-readr::read_csv("./data/exo/chapter6data.csv")
+```
+```{r}
+library(gsheet)
+locations <-("https://docs.google.com/spreadsheets/d/1nehKEBKTQx11LZuo5ZJFKTVS0p5y1ysMPSOSX_m8dS8/edit?usp=sharing")
+```
+
+```{r}
+# Loading the gsheet package
+library(gsheet)
+# Read data from the URL
+variablesUnido <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1nehKEBKTQx11LZuo5ZJFKTVS0p5y1ysMPSOSX_m8dS8/edit?usp=sharing")
+head(variablesUnido)
+```
+
+```{r}
+# Loading the gsheet package
+library(gsheet)
+# Read data from the URL
+dataUnido <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1nehKEBKTQx11LZuo5ZJFKTVS0p5y1ysMPSOSX_m8dS8/edit?usp=sharing")
+head(dataUnido)
+```
+```{r}
+library(readr)
+gdp <-readr::read_csv("./chapter6/data/exo2/gdpCountry.csv")
+```
+
+
+```{r}
+library(readr)
+gdp <-readr::read_csv("./data/exo2/gdpCountry.csv")
+```
+```{r}
+library(readr)
+gdp <-readr::read_csv("./gdpCountry.csv")
+```
+
+```{r}
+library(readr)
+gdp <-readr::read_csv("./chapter10data.csv")
+```
+
+```{r}
+# Add a new column called 'newColumn'
+dataUnido$newColumn <- 42
+```
+
+```{r}
+# Show the columns' name
+colnames(dataUnido)
+```
+
+```{r}
+# Show the column 'newColumn'
+head(dataUnido[,"newColumn"])
+```
+
+```{r}
+# Multiply by 2 and add 5
+dataUnido$newColumn <- dataUnido$newColumn * 2 + 5
+# Show the column 'newColumn'
+head(dataUnido[,"newColumn"])
+```
+
+```{r}
+library(dplyr)
+# Rename the newColumn
+dataUnido <- dataUnido %>% 
+  dplyr::rename(aissata = newColumn)
+colnames(dataUnido)
+```
+
+
+```{r}
+# Delete the column named 'newColumn'
+dataUnido$aissata <- NULL
+# Show columns' name
+colnames(dataUnido)
+```
+
+
+```{r}
+# erasing non important variables
+dataUnido$isicCodeCombinaison <- NULL
+dataUnido$tableDefinitionCode <- NULL
+dataUnido$sourceCode <- NULL
+dataUnido$updateYear <- NULL
+dataUnido$unit <- NULL
+```
+
+```{r}
+# Show columns' name
+colnames(dataUnido)
+```
+
+
+```{r}
+# Provide the dimension of the dataframe
+dim(dataUnido)
+```
+
+```{r}
+dataUnido$country == 2.35
+```
+
+```{r}
+tableDefinitionCode == 04 | tableDefinitionCode == 01
+```
+
+```{r}
+# Loading the dplyr package
+library(dplyr)
+# Subset of dataUnido based on countryCode == Canada
+dataUnidoFrance <- filter(dataUnido, country == "France")
+```
+
+```{r}
+# First lines of the dataframe
+head(dataUnidoFrance)
+```
+
+```{r}
+# Number of columns & rows
+dim(dataUnidoFrance)
+```
+```{r}
+# Subset of dataUnidoCanada based on two variables (number of employees and establishments)
+dataUnidoCanadaVariables <- filter(dataUnidoFrance, tableCode == 4 | tableCode == 1)
+```
+
+```{r}
+# First lines of the dataframe
+head(dataUnidoFrance)
+```
+
+```{r}
+# Subset of dataUnido based on countryCode == Canada
+```
+
+
+```{r}
+dataUnidoFranceAfter44 <- filter(dataUnido, lat > 44)
+```
+
+```{r}
+# First lines of the dataframe
+head(dataUnidoFranceAfter44)
+```
+
+```{r}
+# Dimension of the dataframe
+dim(dataUnidoFranceAfter44)
+```
+
+```{r}
+# dataSorted will receive the dataframe dataUnidoCanadaVariablesAfter2009 sorted by the column value
+dataSorted <- arrange(dataUnidoFranceAfter44, long)
+# first 6 lines of the dataset
+head(dataSorted)
+```
+
+```{r}
+# dataSorted will receive the dataframe dataUnidoCanadaVariablesAfter2009 sorted by the column value
+dataSorted <- arrange(dataUnido, long)
+# first 6 lines of the dataset
+head(dataSorted)
+```
+
+```{r}
+# dataReverse is the opposite of dataSorted, i.e. the first lines will have the highest values
+dataReverse <- arrange(dataUnidoFranceAfter44, desc(long))
+# first 6 lines of the dataset
+head(dataReverse)
+```
+
+```{r}
+# dataReverse is the opposite of dataSorted, i.e. the first lines will have the highest values
+dataReverse <- arrange(dataUnido, desc(long))
+# first 6 lines of the dataset
+head(dataReverse)
+```
+
+```{r}
+gpd <- readr::read_csv("./chapter6/data/exo2/gdpCountry.csv")
+```
+```{r}
+gdp$date<-NULL
+colnames(gdp)
+```
+
+```{r}
+gdp <- readr::read_csv("./chapter6/data/exo2/gdpCountry.csv")
+
+#head(gdp)
+```
+
+```{r}
+gdp$date<-NULL
+colnames(gdp)
+```
+
+```{r}
+gdp$date<-NULL
+colnames(gdp)
+```
+
+```{r}
+library(dplyr)
+gdp2 <-filter(gdp, country=="canada"|country=="australia")
+head(gdp2)
+```
+
+```{r}
+library(dplyr)
+gdp2 <-filter(gdp, country=="belgium")
+head(gdp2)
+```
+
+```{r}
+# Loading tidyr
+library(tidyr)
+# Using pivot_wider() to transform a long dataframe into a wide dataframe
+wideData <- dataSorted %>%
+  pivot_wider(names_from = country, values_from = lat)
+```
+
+```{r}
+# First 6 lines
+head(wideData)
+```
+
+```{r}
+# Dimension of the dataset
+dim(wideData)
+```
+
+```{r}
+# Loading tidyr
+library(tidyr)
+# Using pivot_longer() to transform from wide to long data
+longData <- wideData %>% 
+  pivot_longer(!c(capital, continent), names_to = "long", values_to = "lat")
+```
+
+```{r}
+# Dimension of the dataframe
+dim(longData)
+```
+
+```{r}
+# First 6 lines
+head(longData)
+```
+
+```{r}
+library(tidyr)
+gdp3 <- dataSorted %>%
+  pivot_wider(names_from = country, values_from = lat)
+head(gdp3)
+```
+
+```{r}
+# Loading tidyr
+library(tidyr)
+# Using pivot_longer() to transform from wide to long data
+longData <- wideData %>% 
+  pivot_longer(!c(capital,continent), names_to = "long", values_to = "lat")
+```
+
+
+```{r}
+head(longData)
+```
+
+
+```{r}
+# Exo 4
+gdp4 <- left_join(dataUnidoFrance, dataUnidoFranceAfter44, c("capital","long","lat"))
+
+head(gdp4)
+```
+
+

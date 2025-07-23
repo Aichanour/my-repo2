@@ -1,0 +1,78 @@
+---
+title: "td_seance4"
+author: "BALDE"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# TD de séance 4 du 1er cours
+
+## Etape 1 : Importer via un csv
+
+```{r}
+### Importer via un csv
+library(readr)
+gdp <- readr::read_csv("./dataCanadaFullLong.csv")
+```
+
+## Step 2 : Importez via un gsheet
+```{r}
+### Importer via un gsheet
+#library(gsheet)
+#locations <- gsheet::gsheet2tbl("https://github.com/warint/DPR/blob/main/chapter6/data/chapter6data.csv")
+```
+
+## Etape 3 : Supprimer la colonne
+```{r}
+### Supprimer la colonne tableCode
+gdp$tableCode <- NULL
+### Pour afficher le nom dela colonne
+colnames(gdp)
+```
+
+
+## Etape 4 : Filtrer les données
+### Filtrer les données en fonction des années
+```{r}
+library(dplyr)
+gdp2 <- filter(gdp, year > 2009)
+head(gdp2)
+```
+
+### Filtrer les données en fonction de isicCode=131
+```{r}
+#library(dplyr)
+gdp2 <- filter(gdp, isicCode==131)
+head(gdp2)
+```
+
+### Filtrer les données en fonction de isicCode=181
+```{r}
+#library(dplyr)
+gdp2 <- filter(gdp, isicCode==181)
+head(gdp2)
+```
+
+
+## Etape 5 : "Rallonge" les données
+
+```{r}
+### rallonger les données
+library(tidyr)
+gdp3 <-  gdp %>%
+   pivot_longer(!c(year, countryCode), names_to = "isicCode", values_to = "value")
+ head(gdp3) 
+```
+
+```{r}
+gdp3 <- gdp %>%
+  pivot_wider(names_from = isicCode, values_from = value)
+head(gdp3)
+```
+
