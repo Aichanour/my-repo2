@@ -1,0 +1,125 @@
+---
+title: "Untitled2"
+author: "BALDE"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+## R Markdown
+
+```{r}
+library(readr)
+mydata <- read_csv("https://raw.githubusercontent.com/warint/DPR/refs/heads/main/chapter10/data/dataCanadaFullLong.csv")
+```
+
+```{r}
+dataCanadaFullLong <- readr::read_csv("./chapter10/data/dataCanadaFullLong.csv")
+```
+
+```{r}
+dataCanadaFullLong$isicCode <- as.character(dataCanadaFullLong$isicCode)
+```
+
+```{r}
+install.packages("ggplot2")
+install.packages("ggthemes")
+# Produce a bar chart (Produire un graphique à barres)
+library(ggplot2)
+library(ggthemes)
+ggplot(data = dataCanadaFullLong, aes(x = year, y = value, fill = isicCode)) + 
+  geom_bar(stat = "identity", width = 0.5, position = "dodge") +
+  xlab("") +
+  ylab("Number of employees")  +
+  labs(fill = "Isic Code")  +  
+  theme_minimal() + 
+  scale_fill_brewer(direction = -1)
+```
+
+```{r}
+# Line chart elements (Éléments de graphique linéaire)
+library(ggplot2)
+library(ggthemes)
+ggplot(data = dataCanadaFullLong, aes(x = year, y = value, color = isicCode)) +
+  geom_line(size = 1.5) +
+  xlab("") +
+  ylab("Number of employees")  +
+  labs(color = "Isic Code")  +  
+  theme_minimal() +
+  scale_color_brewer(direction = -1)
+```
+
+```{r}
+ggplot(data = dataCanadaFullLong, aes(x = year, y = value, color = isicCode)) +
+  geom_line(size = 1.5) +
+  xlab("") +
+  ylab("Number of employees")  +
+  labs(color = "Isic Code")  +  
+  theme_minimal() +
+  scale_color_brewer(direction = -1) + 
+  geom_point(size = 2.5)
+```
+```{r}
+# Bubble chart elements
+library(ggplot2)
+library(ggthemes)
+ggplot(data = dataCanadaFullLong, aes(x = year, y = value, color = isicCode)) +
+  geom_point(aes(size = value)) +
+  xlab("") +
+  ylab("Number of employees")  +
+  theme_minimal() +
+  scale_color_brewer(direction = -1) +
+  scale_size_continuous(range = c(3,11)) + 
+  guides(size = FALSE)
+```
+```{r}
+library(ggplot2)
+world <- map_data("world")
+```
+
+```{r}
+ggplot(data = world, aes(x = long, y = lat, group = group)) + 
+  geom_polygon(fill = "white", color = "black") +
+  theme_void()
+```
+
+```{r}
+# Load packages
+library(ggplot2)
+# Retrieve data
+world <- map_data("world")
+americas <- subset(world, region %in% c("USA","Brazil","Mexico", "Colombia", "Argentina", "Canada",
+                                      "Peru","Venezuela","Chile","Guatemala","Ecuador", "Bolivia", "Cuba",
+                                      "Honduras", "Paraguay", "Nicaragua","El Salvador", "Costa Rica", "Panama",
+                                      "Uruguay",  "Jamaica",  "Trinidad and Tobago", "Guyana", "Suriname", "Belize",
+                                      "Barbados", "Saint Lucia", "Grenada", "Saint Vincent and the Grenadines", 
+                                      "Antigua and Barbuda", "Saint Kitts and Nevis"))
+# Create map
+ggplot(data = americas, aes(x = long, y = lat, group = group)) + 
+  geom_polygon(fill = "white", color = "black") +
+  coord_fixed(ratio=1.1, xlim = c(-180, -35))  + 
+  theme_void()
+```
+
+```{r}
+world %>%
+ filter(long >= -180L & long <= 180L) %>%
+ ggplot() +
+ aes(x = long, y = lat, group = group) +
+ geom_path(colour = "#112446") +
+ labs(x = "Pays", 
+ y = "Continent", caption = "Legende") +
+ theme_minimal()
+
+```
+```{r}
+install.packages("remotes")
+remotes::install_github("rstudio/shinytableau")
+```
+
+
