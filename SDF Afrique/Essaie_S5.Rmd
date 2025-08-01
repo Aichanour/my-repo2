@@ -32,7 +32,7 @@ flexdashboard::valueBox(2860, caption = "Gross Domestic Product (Billions USD) i
 
 ### Visuel3
 ```{r}
-flexdashboard::valueBox(37, caption = "Foreign Direct Investment (Billions USD) in 2017", icon="fas fa-circle", color = "#ADD8E6")
+flexdashboard::valueBox(37, caption = "Foreign Direct Investment (Billions USD) in 2017", icon="fas fa-arrow-circle-up", color = "#ADD8E6")
 ```
 
 
@@ -40,7 +40,7 @@ flexdashboard::valueBox(37, caption = "Foreign Direct Investment (Billions USD) 
 ### Visual4
 
 ```{r}
-flexdashboard::valueBox(30, caption = "Labor Force (Millions) in 2017", icon="fas fa-person", color = "#41a9b0")
+flexdashboard::valueBox(30, caption = "Labor Force (Millions) in 2017", icon="fas fa-user-tie", color = "#41a9b0")
 ```
 
 Row2
