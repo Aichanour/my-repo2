@@ -1,0 +1,129 @@
+---
+title: "Seance5_fin"
+author: "BALDE"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+# Lire le package WDI
+library(WDI)
+# Rechercher tous les indicateurs avec le terme « PIB » 
+listOfIndicators <- WDIsearch("GDP")
+# Énumérez les 5 premiers indicateurs
+listOfIndicators[1:5,]
+```
+
+```{r}
+#indicator = "CM.MKT.TRAD.GD.ZS"
+#country = c("FR", "CA", "US","CN")
+#start = 2000
+#end = 2016
+library(WDI)
+# Accéder et stocker les données concernant les actions négociées en valeur totale (% du PIB)
+stockTraded <- WDI(indicator = "CM.MKT.TRAD.GD.ZS", country = c("FR", "CA", "US","CN"), start = 2000, end = 2016)
+head(stockTraded)
+```
+
+
+
+
+```{r}
+
+remotes::install_github("expersso/OECD")
+
+```
+
+```{r}
+# Charger le bon package
+library(OECD)
+
+# Lister les fonctions disponibles dans le package
+ls("package:OECD")
+
+```
+
+```{r}
+library(OECD)
+
+# Rechercher les datasets contenant le mot "unemployment"
+search_dataset("unemployment")
+
+```
+
+
+```{r}
+# Loading OECD library
+library(OECD)
+# Lister tous les ensembles de données disponibles
+dataset_list <- get_datasets()
+# Rechercher tous les indicateurs avec le terme « chômage »
+search_dataset("unemployment", data = dataset_list)
+```
+
+```{r}
+# Structure of a query
+dstruc <- get_data_structure("DUR_D")
+str(dstruc, max.level = 1)
+```
+
+```{r}
+# Filter use to narrow the research (Canada-Germany-France-USA; male and female; 20-24 years old)
+filter_list <- list(c("DEU", "FRA", "CAN", "USA"), "MW", "2024")
+# Dataframe containing selected data
+unemployementOECD <- get_dataset(dataset = "DUR_D", filter = filter_list)
+unemployementOECD[1:6,]
+```
+
+```{r}
+# Installer devtools si ce n'est pas déjà fait
+install.packages("devtools")
+library(devtools)
+
+# Cherche si le package est sur GitHub, par exemple :
+install_github("Aichanour/spiR")  # à remplacer par le bon dépôt si connu
+```
+
+```{r}
+if(!require(devtools)) install.packages("devtools")
+if(!require(spiR)) install.packages("spiR")
+library(spiR)
+#Get the ISO code for a specific country
+myCountry <- spir_country("Canada")
+myCountry
+
+```
+
+```{r}
+#install.packages("WDI")
+library(WDI)
+
+# Exemple : indicateurs sociaux en Guinée (GN)
+data_gn <- WDI(country = "GN", 
+               indicator = c("SP.POP.TOTL", "SE.PRM.ENRR", "SH.STA.BRTC.ZS"),
+               start = 2010, end = 2022)
+
+head(data_gn)
+
+```
+
+```{r}
+#Chargement du package statCanR
+library(statcanR)
+# Obtenir des données avec la fonction statcan_data
+mydata <- statcan_data("27-10-0014-01", "eng")
+head(mydata)
+```
+
+```{r}
+if(!require(devtools)) install.packages("devtools")
+devtools::install_github("warint/epibibR")
+library(epibibR)
+```
+
