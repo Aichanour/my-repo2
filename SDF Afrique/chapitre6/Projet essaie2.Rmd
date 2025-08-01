@@ -1,0 +1,179 @@
+---
+title: "Projet essaie2"
+author: "BALDE"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r}
+#filtredategdpcanada <- filter(gdpA, date > 2012)
+```
+
+
+```{r}
+# First lines of the dataframe
+#head(filtredategdpcanada)
+```
+
+```{r}
+# Dimension of the dataframe
+ #dim(filtredategdpcanada)
+```
+
+
+```{r}
+library(readr)
+gdpC <-readr::read_csv("./gdpCountry.csv")
+```
+
+
+```{r}
+# essaie valide
+library(dplyr)
+gdp2 <-filter(gdpC, country=="canada"|country=="australia")
+head(gdp2)
+```
+
+
+
+```{r}
+# essaie valide
+library(dplyr)
+#dataSorted <- arrange(gpd1, value)
+# first 6 lines of the dataset
+#head(dataSorted) 
+```
+
+
+```{r}
+# essaie valide
+#dataSorted <- arrange(gpd1, value)
+# first 6 lines of the dataset
+#head(dataSorted)
+```
+
+
+```{r}
+# essaie valide
+# dataReverse is the opposite of dataSorted, i.e. the first lines will have the highest values
+#dataReverse <- arrange(gpd1, desc(value))
+# first 6 lines of the dataset
+#head(dataReverse)
+```
+
+```{r}
+# essaie valide
+# dataReverse is the opposite of dataSorted, i.e. the first lines will have the highest values
+dataReverse <- arrange(filtredategdpcanada, desc(date))
+# first 6 lines of the dataset
+head(dataReverse)
+```
+
+```{r}
+gpd1 <- readr::read_csv("./gdpCountry.csv")
+
+```
+
+```{r}
+gpd1$variable<-NULL
+#colnames(gpd1)
+head(gpd1)
+```
+
+```{r}
+gpd1 <- readr::read_csv("./gdpCountry.csv")
+
+#head(gpd1)
+```
+
+```{r}
+#Supprimer la colonne date
+gpd1$country<-NULL
+colnames(gpd1)
+```
+
+```{r}
+# essaie valide
+library(dplyr)
+gdp2 <-filter(gdpA, country=="Argentina"|country=="Australia")
+head(gdp2)
+```
+
+```{r}
+# essaie valide
+library(dplyr)
+gdp2 <-filter(gdpA, country=="Algeria")
+head(gdp2)
+```
+
+```{r}
+# Forme longue
+library(tidyr)
+# Tranposer country avec la valeur value
+wideData <- dataSorted %>%
+  pivot_wider(names_from = country, values_from = value)
+```
+
+```{r}
+# Affichage
+head(wideData)
+```
+
+```{r}
+# Dimension of the dataset
+dim(wideData)
+```
+
+```{r}
+# Loading tidyr
+library(tidyr)
+# Using pivot_longer() to transform from wide to long data
+#longData <- wideData %>% 
+#pivot_longer(!c(gdpA, country), names_to = "country", values_to = "date")
+```
+
+```{r}
+# Dimension of the dataframe
+#dim(longData)
+```
+
+```{r}
+# First 6 lines
+#head(longData)
+```
+
+```{r}
+library(tidyr)
+# Transposer les années avec value 
+gdp3 <- dataSorted %>%
+  pivot_wider(names_from = date, values_from = value)
+head(gdp3)
+```
+
+```{r}
+# Loading tidyr
+#library(tidyr)
+# Using pivot_longer() to transform from wide to long data
+#longData <- wideData %>% 
+  #pivot_longer(!c(capital,continent), names_to = "long", values_to = "lat")
+```
+
+
+```{r}
+#head(longData)
+```
+
+
+```{r}
+# Exo 4: Filtrer les colonnes value, country, variable
+gdp4 <- left_join(gdpC, gpd1, c("value","variable"))
+
+head(gdp4)
+```

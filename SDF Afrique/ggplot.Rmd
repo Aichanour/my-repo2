@@ -2,7 +2,9 @@
 title: "Untitled2"
 author: "BALDE"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -15,11 +17,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(readr)
-mydata <- read_csv("https://raw.githubusercontent.com/warint/DPR/refs/heads/main/chapter10/data/dataCanadaFullLong.csv")
+#mydata <- read_csv("https://raw.githubusercontent.com/warint/DPR/refs/heads/main/chapter10/data/dataCanadaFullLong.csv")
 ```
 
 ```{r}
-dataCanadaFullLong <- readr::read_csv("./chapter10/data/dataCanadaFullLong.csv")
+dataCanadaFullLong <- readr::read_csv("./chapitre10/dataCanadaFullLong.csv")
+
 ```
 
 ```{r}
@@ -27,6 +30,7 @@ dataCanadaFullLong$isicCode <- as.character(dataCanadaFullLong$isicCode)
 ```
 
 ```{r}
+options(repos = c(CRAN = "https://cran.r-project.org"))
 install.packages("ggplot2")
 install.packages("ggthemes")
 # Produce a bar chart (Produire un graphique à barres)
@@ -80,6 +84,7 @@ ggplot(data = dataCanadaFullLong, aes(x = year, y = value, color = isicCode)) +
 ```{r}
 library(ggplot2)
 world <- map_data("world")
+head(world)
 ```
 
 ```{r}
@@ -107,6 +112,7 @@ ggplot(data = americas, aes(x = long, y = lat, group = group)) +
 ```
 
 ```{r}
+library(dplyr)
 world %>%
  filter(long >= -180L & long <= 180L) %>%
  ggplot() +

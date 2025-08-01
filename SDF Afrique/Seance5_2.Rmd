@@ -1,0 +1,27 @@
+---
+title: "Tabset Row"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+Row 
+-----------------------------------------------------------------------
+### Contact Rate
+```{r}
+flexdashboard::gauge(90, min = 0, max = 100, symbol = '%', flexdashboard::gaugeSectors(
+  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
+))
+```
+### Average Rating 
+```{r}
+flexdashboard::gauge(37.4, min = 0, max = 50, flexdashboard::gaugeSectors(
+  success = c(41, 50), warning = c(21, 40), danger = c(0, 20)
+))
+```
+### Cancellations
+```{r}
+flexdashboard::gauge(7, min = 0, max = 10, flexdashboard::gaugeSectors(
+  success = c(0, 2), warning = c(3, 6), danger = c(7, 10)
+))
+```

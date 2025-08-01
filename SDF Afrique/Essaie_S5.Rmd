@@ -1,0 +1,96 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    
+---
+
+Row
+-----------------------------------------------------------------------
+### 
+
+```{r}
+library(ggplot2)
+library(maps)
+# Charger les données d'un pays
+carte_france <- map_data("world", region = "France")
+# Créer la carte
+ggplot(data = carte_france, aes(x = long, y = lat, group = group)) + 
+  geom_polygon(fill = "white", color = "black") +
+   coord_quickmap(xlim = c(-10, 10), ylim = c(41, 52)) + 
+  theme_void()
+```
+
+
+### Visuel2
+```{r}
+flexdashboard::valueBox(2860, caption = "Gross Domestic Product (Billions USD) in 2017", icon="fas fa-euro", color = "#55bd34")
+
+```
+
+
+### Visuel3
+```{r}
+flexdashboard::valueBox(37, caption = "Foreign Direct Investment (Billions USD) in 2017", icon="fas fa-circle", color = "#ADD8E6")
+```
+
+
+
+### Visual4
+
+```{r}
+flexdashboard::valueBox(30, caption = "Labor Force (Millions) in 2017", icon="fas fa-person", color = "#41a9b0")
+```
+
+Row2
+-----------------------------------------------------------------------
+### Gross Domestic Product (1990-2017)
+```{r}
+coube1  <-readr::read_csv("./chapter11data.csv")
+
+```
+
+```{r}
+#   produire un graphique linéaire
+library(ggplot2)
+library(ggthemes)
+ggplot(data = coube1, aes(x = year, y = gdp)) +
+  geom_line(color = "#55bd34", size = 1) +
+  xlab("Years") +
+  ylab("Gross domestic product")  +
+  theme_minimal() +
+  scale_color_brewer(direction = -1)+
+  geom_point( color = "#55bd34",size = 2.5)
+
+```
+
+
+### Foreign Direct Invesment (1990-2017)
+```{r}
+library(ggplot2)
+library(ggthemes)
+ggplot(data = coube1, aes(x = year, y = fdi)) +
+  geom_line(color = "#ADD8E6",size = 1) +
+  xlab("Years") +
+  ylab("Foreign Direct Invesment")  +
+  theme_minimal() +
+  scale_color_brewer(direction = -1)+
+  geom_point(color = "#ADD8E6",size = 2.5)
+
+```
+
+### Labor Force (1990-2017)
+```{r}
+library(ggplot2)
+library(ggthemes)
+ggplot(data = coube1, aes(x = year, y = laborForce)) +
+  geom_line(color = "#41a9b0",size = 1) +
+  xlab("Years") +
+  ylab("Labor Force")  +
+  theme_minimal() +
+  scale_color_brewer(direction = -1)+
+  geom_point(color = "#41a9b0",size = 2.5)
+
+```
+

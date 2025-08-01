@@ -1,5 +1,5 @@
 ---
-title: "Essaie_image"
+title: "PROJET"
 author: "BALDE"
 date: "`r Sys.Date()`"
 output:
@@ -10,16 +10,15 @@ output:
     toc: true
   pdf_document:
     toc: true
-    latex_engine: xelatex
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-![](./Image.png)
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# R Markdown
+## Introduction
+This is an R Markdown document. *Markdown is a simple formatting syntax for authoring HTML*, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
@@ -27,14 +26,15 @@ When you click the **Knit** button a document will be generated that includes bo
 summary(cars)
 ```
 
-![](./image terrain.jpg)
-![](./Konkouré.png)
-## Including Plots
+### Including Plots
 
-![](./Courbe_vent.png)
 You can also embed plots, for example:
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+![](./SDF Afrique/Konkouré.png)
 

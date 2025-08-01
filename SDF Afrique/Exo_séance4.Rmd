@@ -2,7 +2,9 @@
 title: "Exo_séance4"
 author: "BALDE"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -10,12 +12,14 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-
-
 ```{r}
 # Etape1_importer les donnees
 library(readr)
-gdp5 <- read_csv("https://raw.githubusercontent.com/warint/DPR/refs/heads/main/chapter10/data/chapter10data.csv")
+#gdp5 <- read_csv("https://raw.githubusercontent.com/warint/DPR/refs/heads/main/chapter10/data/chapter10data.csv")
+```
+
+```{r}
+gdp5  <-readr::read_csv("./chapitre10/chapter10data.csv")
 ```
 
 ```{r}
@@ -30,7 +34,7 @@ ggplot(data = gdp5, aes(x = year, y = gdp, color = country)) +
   geom_line(size = 0.2) +
   xlab("Years") +
   ylab("Gross domestic product")  +
-  labs(color = "country")  +  
+  labs(color = "Country")  +  
   theme_minimal() +
   scale_color_brewer(direction = -1)+
   geom_point(size = 0.4)

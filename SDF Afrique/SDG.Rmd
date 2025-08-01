@@ -1,0 +1,35 @@
+---
+title: "Untitled"
+author: "BALDE"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+  html_document:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r cars}
+summary(cars)
+```
+
+## Inserer une image
+![Figure1: Palais royal ](.\dossier git\Dossier image\image_1.jpg)
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+![Fig2: Image du terrain](./dossier git/Dossier image/Image terrain.jpg) 
+
+![Fig3: Mouvement du vent](./dossier git/Dossier image/Mouvement_vent.png) 
+
+
+![Fig4: Courbe du vent](./dossier git/Dossier image/Courbe_vent.png)

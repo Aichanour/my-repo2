@@ -1,42 +1,43 @@
 ---
-title: "Exo2_séance2"
+title: "Exo"
 author: "BALDE"
 date: "`r Sys.Date()`"
-bibliography: references3.bib
-biblio-style: ieee
 output:
   pdf_document:
-    latex_engine: xelatex
     toc: true
-    toc_depth: 2
-citation_package: biblatex
+    latex_engine: xelatex
+  html_document:
+    toc: true
+    number_sections: true
+bibliography: references2.bib
 ---
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 # Introduction
 
-La production d’énergie éolienne repose principalement sur l’exploitation de la force du vent pour générer de l’électricité. Ce mode de production renouvelable joue un rôle croissant dans la transition énergétique mondiale. L’efficacité d’une éolienne dépend de plusieurs facteurs, dont la vitesse du vent, la surface balayée par les pales et le rendement global du système.[@schwab_global_2019]  <http://rmarkdown.rstudio.com>     
+La production d’énergie éolienne repose principalement sur l’exploitation de la force du vent pour générer de l’électricité. Ce mode de production renouvelable joue un rôle croissant dans la transition énergétique mondiale. L’efficacité d’une éolienne dépend de plusieurs facteurs, dont la vitesse du vent, la surface balayée par les pales et le rendement  global du système.  <http://rmarkdown.rstudio.com>     
 [Lien](http://rmarkdown.rstudio.com)
 
 #  Illustration du système éolien
-Voici une illustration simplifiée d’une **éolienne** typique à axe horizontal, couramment utilisée dans les parcs éoliens. [@schwab_global_2019]
+Voici une illustration simplifiée d’une **éolienne** typique à axe horizontal, couramment utilisée dans les parcs éoliens.
 
-![](./Mouvement_vent.png)
+![](./SDF Afrique/Mouvement_vent.png)
 
 *Figure 1 : Schéma d’une éolienne à axe* 
 
 ## Système mécanique
-Un générateur éolien ou aérogénérateur, plus communément appelé éolienne, est un dispositif qui transforme une partie de l'énergie cinétique du vent (fluide en mouvement) en énergie mécanique disponible sur un arbre de transmission puis en énergie électrique par l'intermédiaire d'une génératrice (Figure II.4). [@schwab_global_2019]
+Un générateur éolien ou aérogénérateur, plus communément appelé éolienne, est un dispositif qui transforme une partie de l'énergie cinétique du vent (fluide en mouvement) en énergie mécanique disponible sur un arbre de transmission puis en énergie électrique par l'intermédiaire d'une génératrice (Figure II.4).
 
 ## Système électrique
-L'énergie éolienne est une énergie "renouvelable" non dégradée, géographiquement diffuse, et surtout en corrélation saisonnière (l’énergie électrique est largement plus demandée en hiver et c’est souvent à cette période que la moyenne des vitesses des vents est la plus élevée). De plus, c'est une énergie qui ne produit aucun rejet atmosphérique ni déchet radioactif. [@schwab_global_2019]
+L'énergie éolienne est une énergie "renouvelable" non dégradée, géographiquement diffuse, et surtout en corrélation saisonnière (l’énergie électrique est largement plus demandée en hiver et c’est souvent à cette période que la moyenne des vitesses des vents est la plus élevée). De plus, c'est une énergie qui ne produit aucun rejet atmosphérique ni déchet radioactif.
 
 ###	Distribution de Weibull
-Le modèle le plus utilisé pour caractériser la distribution des vitesses du vent est la distribution de probabilité de Weibull. La fonction de distribution de Weibull est une fonction exponentielle à deux paramètres : un paramètre d’échelle c (m/s) et un paramètre de forme k (sans unité) caractéristiques des données du vent (Justus et al., 1978 ; Henessey et al., 1978). Le paramètre c renseigne sur la moyenne du vent caractéristique du site, tandis que le paramètre k indique le caractère plus ou moins pointu de la distribution. [@schwab_global_2019]
+Le modèle le plus utilisé pour caractériser la distribution des vitesses du vent est la distribution de probabilité de Weibull. La fonction de distribution de Weibull est une fonction exponentielle à deux paramètres : un paramètre d’échelle c (m/s) et un paramètre de forme k (sans unité) caractéristiques des données du vent (Justus et al., 1978 ; Henessey et al., 1978). Le paramètre c renseigne sur la moyenne du vent caractéristique du site, tandis que le paramètre k indique le caractère plus ou moins pointu de la distribution.
 
 ### Distribution hybride de Weibull 
 
@@ -44,7 +45,7 @@ Sur les sites où la fréquence des vents calmes est relativement importante (> 
 
 ###  Distribution de Rayleigh
 
-Cette distribution est souvent utilisée par des constructeurs d’éoliennes pour évaluer la production d’énergie éolienne en fonction de la vitesse moyenne du vent d’un site. Le principal avantage de la loi de Rayleigh réside dans sa simplicité. En effet, de par sa définition l’utilisation d’un paramètre de forme k égal à 2 pour la loi de Rayleigh ne dépend plus que de la valeur moyenne du vent sur le site. 
+Cette distribution est souvent utilisée par des constructeurs d’éoliennes pour évaluer la production d’énergie éolienne en fonction de la vitesse moyenne du vent d’un site. Le principal avantage de la loi de Rayleigh réside dans sa simplicité. En effet, de par sa définition l’utilisation d’un paramètre de forme k égal à 2 pour la loi de Rayleigh ne dépend plus que de la valeur moyenne du vent sur le site.  
 
 # Formule de la puissance éolienne
                P= \frac{1}{2}.\rho.S.V^3.C_{p}
@@ -54,17 +55,17 @@ Cette distribution est souvent utilisée par des constructeurs d’éoliennes po
                    f(v)=2.(V/C^2).\exp(-(V/C)^2)
 
 *La puissance récupérable par une éolienne est donnée par la formule :*
-*Le paramètre $\rho$ représente la densité de l’air (environ 1,225 kg/m³),*
+*ρ est la masse volumique de l’air (environ 1,225 kg/m³),*
  *est le coefficient de puissance (limité à 0,593 par la limite de Betz).*
  
 ## Puissance disponible
 
-Compte tenu des nécessités de conversion de l’énergie cinétique due au vent en énergie mécanique (mouvement de rotation de l’éolienne), l’énergie disponible (potentiel) subit une suite de pertes en cascades, jusqu’à la sortie de la machine, (limite de Betz, seuils machine et pertes de conversion) [17]. Cette dégradation de l’énergie est représentée schématiquement en figure 2.9. [@schwab_global_2019]
+Compte tenu des nécessités de conversion de l’énergie cinétique due au vent en énergie mécanique (mouvement de rotation de l’éolienne), l’énergie disponible (potentiel) subit une suite de pertes en cascades, jusqu’à la sortie de la machine, (limite de Betz, seuils machine et pertes de conversion) [17]. Cette dégradation de l’énergie est représentée schématiquement en figure 2.9. 
 
 ## Puissance récupérable
 
 Ce furent les travaux de Betz (1926) qui explicitèrent cette théorie matérialisée par une loi qui porte son nom. La loi de Betz stipule qu'une éolienne ne pourra jamais convertir en énergie mécanique plus de 16/27 (59%) de l'énergie cinétique contenue dans le vent. En effet, Betz démontre qu’en appliquant la théorie de Froude et les hypothèses associées à l’écoulement du courant de vent sur l’éolienne (Fig. 2.12) on obtient :
- - La puissance absorbée par le rotor par unité de surface (W.m-2) :  [@nationsEnergiesRenouvelablesQuestce]
+ - La puissance absorbée par le rotor par unité de surface (W.m-2) :  
  
 ### Limite de Bet
 
@@ -75,9 +76,9 @@ Ce furent les travaux de Betz (1926) qui explicitèrent cette théorie matérial
                 f(v)_{Rayleigh}= \frac{\pi}{2}.\frac{V}{V_m^2}.\exp[-\frac{\pi}{4}.(\frac{V}{V_m})^2]
  
 #  Graphique de variation de la puissance
- Voici un graphique représentant la variation de la puissance théorique d’une éolienne en fonction de la vitesse du vent. [@schwab_global_2019]
+ Voici un graphique représentant la variation de la puissance théorique d’une éolienne en fonction de la vitesse du vent.
  
- ![](./Courbe_vent.png)
+ ![](./SDF Afrique/Courbe_vent.png)
  
  *Figure 2 : Courbe de puissance en fonction de la vitesse du vent.*
  
@@ -91,15 +92,13 @@ En général, les mesures de la vitesse du vent sont faites à 10 m d’altitude
  
 ### Extrapolation de la vitesse du vent 
 
-En général, les mesures de la vitesse du vent sont faites à 10 m d’altitude au-dessus de la surface de la terre. Il est toutefois nécessaire d’estimer la vitesse du vent à différentes altitudes. La vitesse du vent augmente avec l’altitude. L’extrapolation de la vitesse du vent pour différentes altitudes est obtenue par la relation suivante [12]. [@schwab_global_2019]
+En général, les mesures de la vitesse du vent sont faites à 10 m d’altitude au-dessus de la surface de la terre. Il est toutefois nécessaire d’estimer la vitesse du vent à différentes altitudes. La vitesse du vent augmente avec l’altitude. L’extrapolation de la vitesse du vent pour différentes altitudes est obtenue par la relation suivante [12].
  
 # Conclusion
 
  L’exploitation optimale de l’énergie éolienne nécessite une bonne compréhension des relations physiques entre le vent et la production électrique. La formule de la puissance éolienne met en évidence le rôle crucial de la vitesse du vent, tandis que les outils graphiques et les modèles permettent d’anticiper le comportement d’une éolienne selon les conditions météorologiques. Une évaluation fine de ces paramètres permet d’optimiser le choix des sites pour une production durable et efficace.
   
 
-![](Image terrain.jpg)
-## REFERRENCE
+![](./dossier git/SDF Afrique/Image terrain.jpg)
 
-
-
+# REFERENCE
