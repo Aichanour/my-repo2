@@ -1,0 +1,94 @@
+---
+title: "Exo2_séance2"
+author: "Balde"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+# Loading the quantmod package
+library(quantmod)
+
+# Access financial information on Apple stock (affiche les informations de AAPL)
+getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31") 
+head(AAPL)
+```
+```{r}
+# Quel est le minimum de la valeur ajustée de l’action Apple ? Complétez le code suivant.
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+
+# Insert le code pour afficher le minimum 
+min(AAPL$AAPL.Adjusted)
+```
+```{r}
+# Quel est le maximum de la valeur ajustée de l’action Apple ?
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+
+# Insert le code pour afficher le maximum
+max(AAPL$AAPL.Adjusted)
+```
+```{r}
+# Quelle est la médiane de la valeur ajustée de l’action Apple ?
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+
+# Insert le code pour afficher la mediane
+median(AAPL$AAPL.Adjusted)
+```
+```{r}
+# Quelle est la moyenne de la valeur ajustée de l’action Apple ?
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+
+# Insert le code pour afficher la moyenne
+mean(AAPL$AAPL.Adjusted)
+```
+```{r}
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+# Quelle est la moyenne tronquée à 5 % de la valeur ajustée de l’action Apple ?
+# Insert le code pour afficher la moyenne tronquée
+mean(AAPL$AAPL.Adjusted, trim = 0.05)
+```
+```{r}
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+# Quel est le troisième quartile (75 %) de la valeur ajustée des actions d’Apple ?
+# Insert the missing code below
+quantile(AAPL$AAPL.Adjusted, probs = 0.75)
+```
+```{r}
+# Qu’est-ce que le premier quartile (25 %) et 80 % de la valeur ajustée des actions d’Apple ?
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+
+# Insert the missing code below
+quantile(AAPL$AAPL.Adjusted, probs = c(0.25, 0.80))
+```
+```{r}
+# Quelle est la variance de l’échantillon et l’écart standard de la valeur ajustée des actions d’Apple ?
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+
+# Insert the missing code below
+var(AAPL$AAPL.Adjusted); sd(AAPL$AAPL.Adjusted)
+```
+```{r}
+# Quelle est la valeur IQR de l’action ajustée d’Apple ?
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+
+# Insert the missing code below
+IQR(AAPL$AAPL.Adjusted)
+```
+```{r}
+# Asymétrie de l’échantillon
+quantmod::getSymbols("AAPL", src="yahoo", from="2020-01-01", to="2020-12-31")
+
+# Insert the missing code below
+library(e1071)
+skewness(AAPL$AAPL.Adjusted)
+2*sqrt(6/length(AAPL$AAPL.Adjusted))
+```
+
+

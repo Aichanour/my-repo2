@@ -1,0 +1,79 @@
+---
+title: "Exercice1_séance2"
+author: "Balde"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+# We now create our dataframe
+library(ISLR)
+library(dplyr)
+mydata <- data.frame(College)
+# View(mydata)
+str(mydata)
+```
+```{r}
+summary(mydata)
+```
+```{r}
+# code chunk here
+pairs(mydata[,1:10])
+```
+
+```{r}
+# code chunk here
+boxplot(Outstate~Private,
+        data=mydata,
+        xlab="Private",
+        ylab="Outstate")
+```
+
+```{r}
+mydata <- mydata %>% mutate(Elite = case_when(mydata$Top10perc > 50 ~ "Yes",
+                                   TRUE ~ "No"))
+# View(mydata)  # 78 Elite
+```
+
+```{r}
+# code chunk here
+boxplot(Outstate~Elite,
+        data=mydata,
+        xlab="Elite",
+        ylab="Outstate")
+```
+```{r}
+# code chunk here
+hist(mydata$Apps,
+     breaks=50,
+     xlim=c(0,25000),
+     main="Apps")
+```
+```{r}
+# code chunk here
+hist(mydata$Enroll,
+     breaks=25,
+     main="Enroll")
+```
+
+```{r}
+# code chunk here
+hist(mydata$Expend,
+     breaks=25,
+     main="Expend")
+```
+
+```{r}
+# code chunk here
+hist(mydata$Outstate,
+     main="Outstate")
+```
+

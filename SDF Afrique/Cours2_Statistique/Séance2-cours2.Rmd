@@ -1,0 +1,93 @@
+---
+title: "Untitled"
+author: "Balde"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+# données intégrées et création d'un dataframe à partir d'un vecteur
+mydata <- data.frame(stack.loss)
+View(mydata)
+```
+
+```{r}
+# Calculer la moyenne d'un échantillon
+mean(mydata$stack.loss)
+```
+```{r}
+# Afficher la médianne
+median(mydata$stack.loss)
+```
+```{r}
+# Moyenne rogner
+attach(mydata)
+mean(stack.loss, trim = 0.05)
+
+```
+```{r}
+# Quantile de l'échantion
+# Let's simplify the writing
+attach(mydata)
+mean(stack.loss, trim = 0.05)
+```
+
+```{r}
+quantile(stack.loss, probs = 0.75)
+```
+```{r}
+quantile(stack.loss, probs = c(0, 0.25, 0.80))
+```
+```{r}
+# Percentile : le pourcentage d'observations qui se situent en dessous d'un point de données spécifique
+
+pnorm(1800, mean = 1500, sd = 300)
+```
+```{r}
+# Calcul de la variance de l'échantillon et l'ecart type 
+var(stack.loss); sd(stack.loss)
+```
+```{r}
+# Coefficient inter quantile
+IQR(stack.loss)
+```
+```{r}
+quantile(stack.loss, probs = c(0.25, 0.75))
+```
+```{r}
+# Asymétrie de l'échantillon
+library(e1071) # install.packages("e1071")
+skewness(stack.loss)
+```
+```{r}
+# calcul de l'assimetrie
+skewness(discoveries)
+```
+```{r}
+2*sqrt(6/length(discoveries))
+```
+```{r}
+# Excès de kurtosis de l'échantillon 2
+library(e1071)
+kurtosis(stack.loss)
+```
+```{r}
+# Si..., alors la distribution des données est fortement kurtique.
+kurtosis(UKDriverDeaths)
+```
+```{r}
+kurtosis(UKDriverDeaths)
+```
+
+```{r}
+4*sqrt(6/length(UKDriverDeaths))
+```
+
